@@ -121,6 +121,7 @@ class Pair<T, U> {
                 pair.getSecond()!=null;
     }
 
+    //проверяем на нулевую переменную
     private boolean firstValuesPresent(Pair<T, U> pair){
         return this.getFirst()!=null&&
                 this.getSecond()==null&&
@@ -128,6 +129,7 @@ class Pair<T, U> {
                 pair.getSecond()==null;
     }
 
+    //проверяем на нулевую переменную
     private boolean secondValuesPresent(Pair<T, U> pair){
         return this.getFirst()==null&&
                 this.getSecond()!=null&&
