@@ -27,8 +27,13 @@ public class PairDemo {
 
         Pair<String, Integer> pair3 = Pair.of("Cool",456);
         Pair<String, Integer> pair4 = Pair.of("Cool",456);
-        System.out.println("COMPARING RESULT: ");
+        System.out.println("COMPARING RESULT");
         System.out.println(pair3.equals(pair4));
+
+        System.out.println("COMPARING WITH NULLS COMPARABLE");
+        Pair<Integer, Integer> pair5 = Pair.of(345,null);
+        Pair<Integer, Integer> pair6 = Pair.of(345,null);
+        System.out.println(pair5.equals(pair6));
     }
 }
 
@@ -80,12 +85,29 @@ class Pair<T, U> {
         U leftS = this.getSecond();
         T rightF = pair.getFirst();
         U rightS = pair.getSecond();
+        
         //если поля не пустые (не null)
         if (allPresent(pair)){
             //если типы полей совпадают
             if (sameClasses(pair)){
                 //true если данные совпадают
                 return leftF.equals(rightF)&&leftS.equals(rightS);
+            }
+
+            //или если первые поля не null
+        } else if (firstValuesPresent(pair)){
+            //если типы полей совпадают
+            if (leftF.getClass()==rightF.getClass()){
+                //true если данные совпадают
+                return leftF.equals(rightF);
+            }
+
+            //или если вторые поля не null
+        } else if (secondValuesPresent(pair)){
+            //если типы полей совпадают
+            if (leftS.getClass()==rightS.getClass()){
+                //true если данные совпадают
+                return leftS.equals(rightS);
             }
         }
         return false;
@@ -96,6 +118,20 @@ class Pair<T, U> {
         return this.getFirst()!=null&&
                 this.getSecond()!=null&&
                 pair.getFirst()!=null&&
+                pair.getSecond()!=null;
+    }
+
+    private boolean firstValuesPresent(Pair<T, U> pair){
+        return this.getFirst()!=null&&
+                this.getSecond()==null&&
+                pair.getFirst()!=null&&
+                pair.getSecond()==null;
+    }
+
+    private boolean secondValuesPresent(Pair<T, U> pair){
+        return this.getFirst()==null&&
+                this.getSecond()!=null&&
+                pair.getFirst()==null&&
                 pair.getSecond()!=null;
     }
 
