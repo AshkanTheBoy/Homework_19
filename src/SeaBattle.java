@@ -7,7 +7,7 @@ public class SeaBattle {
     static int[][] sea = new int[4][6];
 
     public static void main(String[] args) {
-        makeSea();
+        placeShipParts();
         System.out.println("TURNS COMPLETED: " + autoBattle());
 //        fireAt(1,2);
 //        fireAt(1,1);
@@ -20,7 +20,7 @@ public class SeaBattle {
         }
     }
 
-    public static void makeSea() {
+    public static void placeShipParts() {
         sea[0][0] = 1;
         sea[1][0] = 1;
 
